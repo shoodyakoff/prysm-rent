@@ -25,6 +25,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadComponent('sidebar-placeholder', `${pathPrefix}components/sidebar.html`)
     ]);
 
+    // Fix sidebar links
+    const sidebar = document.getElementById('sidebar-placeholder');
+    if (sidebar && pathPrefix) {
+        const links = sidebar.querySelectorAll('a');
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('/')) {
+                 link.setAttribute('href', pathPrefix + href);
+            }
+        });
+    }
+
     // 1. Initialize Lucide Icons (AFTER components are loaded)
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -56,6 +68,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         card.addEventListener('click', () => {
             const reportName = card.getAttribute('data-report');
             console.log(`Clicked report: ${reportName}`);
+
+            if (reportName === 'Rent Roll') {
+                window.location.href = 'rent-roll.html';
+            }
         });
     });
 
