@@ -512,3 +512,268 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- RENT ROLL PAGE STYLES --- */
+
+/* Controls Row (VAT Toggle) */
+.rr-controls-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.rr-vat-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rr-vat-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* Toggle Switch */
+.rr-vat-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.rr-vat-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E5E7EB;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-violet);
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Tabs */
+.rr-tabs-container {
+    margin-bottom: 32px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.rr-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.rr-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.2s;
+}
+
+.rr-tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(0,0,0,0.03);
+}
+
+.rr-tab-btn.active {
+    background: var(--bg-dark);
+    color: var(--text-white);
+}
+
+/* Local Metrics (Tab Header) */
+.rr-local-metrics-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.rr-local-metric {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 200px;
+}
+
+.rr-local-metric .label {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.rr-local-metric .value {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Charts Grid */
+.rr-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.rr-chart-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.rr-chart-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-main);
+}
+
+/* Table Controls (Search) */
+.rr-table-controls {
+    margin-bottom: 16px;
+}
+
+.rr-search-wrapper {
+    position: relative;
+    max-width: 400px;
+}
+
+.rr-search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.rr-search-wrapper input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+    background: #FFFFFF;
+    color: var(--text-main);
+}
+
+.rr-search-wrapper input:focus {
+    border-color: var(--primary-violet);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Table */
+.rr-table-container {
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.rr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.rr-table th {
+    background: #F9FAFB;
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-light);
+    border-bottom: 1px solid #E5E7EB;
+    white-space: nowrap;
+}
+
+.rr-table td {
+    padding: 16px;
+    border-bottom: 1px solid #F3F4F6;
+    color: var(--text-main);
+}
+
+.rr-table tr:last-child td {
+    border-bottom: none;
+}
+
+.rr-table .fw-medium {
+    font-weight: 500;
+}
+
+/* Responsive for Rent Roll */
+@media (max-width: 1200px) {
+    .rr-charts-grid {
+        grid-template-columns: 1fr;
+    }
+    .rr-local-metrics-grid {
+        flex-wrap: wrap;
+    }
+    .rr-local-metric {
+        flex: 1;
+    }
+    .rr-table-container {
+        overflow-x: auto;
+    }
+}
+
+/* ApexCharts Font Fix */
+.apexcharts-text, .apexcharts-title-text, .apexcharts-legend-text, .apexcharts-tooltip-text {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Contrast fix for light metric cards */
+.metric-planning .metric-icon-circle,
+.metric-control .metric-icon-circle,
+.metric-optimization .metric-icon-circle {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.metric-planning .metric-icon-circle i { color: var(--color-icon-planning); }
+.metric-control .metric-icon-circle i { color: var(--color-icon-control); }
+.metric-optimization .metric-icon-circle i { color: var(--color-icon-optimization); }

@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(`Clicked report: ${reportName}`);
 
             if (reportName === 'Rent Roll') {
-                window.location.href = 'rent-roll.html';
+                window.location.href = pathPrefix + 'pages/rent-roll.html';
             }
         });
     });
