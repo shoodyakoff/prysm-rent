@@ -1,0 +1,503 @@
+@font-face {
+    font-family: 'Factor A';
+    src: local('Factor A'), url('../fonts/FactorA-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Factor A';
+    src: local('Factor A Medium'), url('../fonts/FactorA-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Factor A';
+    src: local('Factor A Bold'), url('../fonts/FactorA-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Factor A', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #FAFAFA;
+    color: #1D1F2A;
+    overflow-x: hidden;
+}
+
+/* Variables based on TZ */
+:root {
+    --bg-dark: #131520;
+    --bg-content: #FAFAFA;
+    --text-main: #1D1F2A;
+    --text-secondary: #1D1F2A; /* Figma uses same color for desc */
+    --text-light: #9CA3AF;
+    --text-white: #FFFFFF;
+    --border-dark: rgba(255, 255, 255, 0.1);
+    --primary-indigo: #4A43B6; /* Updated to match Figma icon background */
+    --primary-violet: #8B5CF6;
+    --badge-gradient: linear-gradient(135deg, #EC4899 0%, #D946EF 100%);
+}
+
+/* 1. Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background-color: var(--bg-dark);
+    border-bottom: 1px solid var(--border-dark);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-prysm {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.letter-y {
+    background: linear-gradient(to bottom, #5B8DEF, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.header-divider {
+    margin: 0 12px;
+    color: #6B7280;
+    font-size: 20px;
+}
+
+.logo-poklonka {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+}
+.icon-building-logo {
+    width: 20px;
+    height: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-icon-wrapper {
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.notification-wrapper {
+    position: relative;
+    color: #FFFFFF;
+}
+.notification-wrapper i {
+    width: 24px;
+    height: 24px;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 0px; /* Adjusted visual align */
+    right: 0px;
+    width: 8px;
+    height: 8px;
+    background: #EF4444;
+    border-radius: 50%;
+    border: 2px solid #1E1F28;
+}
+
+.profile-wrapper {
+    width: 32px;
+    height: 32px;
+    background: #374151;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+.profile-wrapper i {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-chevron {
+    color: #FFFFFF;
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+/* 2. Sidebar */
+.sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 64px);
+    background: var(--bg-dark);
+    border-right: 1px solid var(--border-dark);
+    padding: 24px 16px;
+    overflow-y: auto;
+}
+
+.menu-section-title {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    padding-left: 12px; /* Figma might align left, but keeping padding for visual hierarchy if needed. Figma has "padding: 16px 0px 4px" for container. */
+}
+.menu-section-title:first-child {
+    margin-top: 0;
+}
+
+.menu-item {
+    height: 36px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.menu-item i {
+    width: 20px;
+    height: 20px;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.menu-item.active {
+    background: rgba(139, 92, 246, 0.1);
+    color: #FFFFFF;
+}
+.menu-item.active i {
+    color: #8B5CF6;
+}
+
+.sidebar-collapse-btn {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9CA3AF;
+    cursor: pointer;
+}
+.sidebar-collapse-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+/* 3. Main Content */
+.main-content {
+    margin-left: 240px;
+    margin-top: 64px;
+    padding: 40px;
+    background: #FAFAFA;
+    min-height: calc(100vh - 64px);
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+/* 5. Metrics Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.metric-card {
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    height: 78px;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Metric Gradients Updated */
+.metric-planning { background: linear-gradient(135deg, #A7F3D0 0%, #6EE7B7 100%); }
+.metric-optimization { background: linear-gradient(135deg, #FDE68A 0%, #FCD34D 100%); }
+.metric-control { background: linear-gradient(135deg, #A5B4FC 0%, #818CF8 100%); }
+
+.metric-lilac { background: #D1DFF8; }
+.metric-pink { background: #F5B5D1; }
+.metric-orange { background: #F5CEB5; }
+.metric-blue { background: #C4E0EF; }
+.metric-purple { background: #B9BAC9; }
+.metric-indigo { background: #D1DFF8; }
+
+.metric-icon-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+.metric-icon-circle i {
+    color: #FFFFFF;
+    width: 24px;
+    height: 24px;
+}
+
+.metric-text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex-grow: 1;
+}
+
+.metric-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1D1F2A;
+    line-height: 1.2;
+    display: flex;
+    align-items: flex-end;
+}
+
+.metric-value {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1D1F2A;
+    line-height: 1.1;
+}
+
+.badge-soon-absolute {
+    background: var(--badge-gradient);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #FFFFFF;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+/* 6. Reports Block */
+.reports-main-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 24px;
+    margin-top: 48px;
+}
+
+.report-section {
+    margin-bottom: 32px;
+}
+
+.report-section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1D1F2A;
+    margin-bottom: 12px;
+}
+
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.report-card {
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 120px;
+}
+
+.report-card.active {
+    background: #FFFFFF;
+    box-shadow: none; /* Figma doesn't explicitly show shadow in snippet, but good for UI. Figma has "Card" style but no shadow listed in snippet. I'll keep it minimal or remove if strictly pixel perfect to code provided. Code says "Card... background: #FFFFFF" */
+    cursor: pointer;
+}
+
+.report-card.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report-card.inactive {
+    background: #F9FAFB;
+    opacity: 0.6;
+    cursor: default;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.report-icon-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.report-icon-circle.bg-indigo { background: transparent; }
+.report-icon-circle.bg-indigo svg { color: var(--primary-indigo); }
+
+.report-icon-circle.bg-gray { background: transparent; }
+.report-icon-circle.bg-gray svg { color: #9CA3AF; }
+
+.report-icon-circle.bg-control { background: transparent; }
+.report-icon-circle.bg-control svg { color: #6366F1; }
+
+.report-icon-circle.bg-planning { background: transparent; }
+.report-icon-circle.bg-planning svg { color: #10B981; }
+
+.report-icon-circle.bg-optimization { background: transparent; }
+.report-icon-circle.bg-optimization svg { color: #F59E0B; }
+
+.report-icon-circle.bg-inactive { background: transparent; }
+.report-icon-circle.bg-inactive svg { color: #D1D5DB; }
+
+.reports-columns-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.report-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.report-icon-circle svg {
+    color: #FFFFFF;
+    width: 24px;
+    height: 24px;
+}
+
+.report-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.report-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1D1F2A;
+    line-height: 20px;
+}
+
+.report-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1D1F2A;
+    margin-top: 0;
+    line-height: 16px;
+}
+
+.report-arrow {
+    width: 20px;
+    height: 20px;
+    color: #1D1F2A;
+}
+
+.badge-soon {
+    background: var(--badge-gradient);
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+    .reports-columns-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Or transform translate for off-canvas */
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .reports-columns-container {
+        grid-template-columns: 1fr;
+    }
+}
