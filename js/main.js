@@ -1,8 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Lucide Icons
-    lucide.createIcons();
+document.addEventListener('DOMContentLoaded', async () => {
+    // Function to load external HTML components
+    async function loadComponent(id, path) {
+        const el = document.getElementById(id);
+        if (el) {
+            try {
+                const res = await fetch(path);
+                if (res.ok) {
+                    el.innerHTML = await res.text();
+                } else {
+                    console.error(`Failed to load component: ${path}`);
+                }
+            } catch (e) {
+                console.error(`Error loading ${path}:`, e);
+            }
+        }
+    }
 
-    // 2. Click handler for Metrics Cards
+    // Get path prefix from body data attribute (default to empty)
+    const pathPrefix = document.body.getAttribute('data-path-prefix') || '';
+
+    // Load Header and Sidebar
+    await Promise.all([
+        loadComponent('header-placeholder', `${pathPrefix}components/header.html`),
+        loadComponent('sidebar-placeholder', `${pathPrefix}components/sidebar.html`)
+    ]);
+
+    // 1. Initialize Lucide Icons (AFTER components are loaded)
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    // 2. Highlight Active Menu Item based on body data attribute
+    const activeMenuId = document.body.getAttribute('data-active-menu');
+    if (activeMenuId) {
+        const activeItem = document.getElementById(activeMenuId);
+        // Remove 'active' from all first (if any default was set in HTML)
+        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+        if (activeItem) {
+            activeItem.classList.add('active');
+        }
+    }
+
+    // 3. Click handler for Metrics Cards
     const metricCards = document.querySelectorAll('.metric-card');
     metricCards.forEach(card => {
         card.addEventListener('click', () => {
@@ -11,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Click handler for Active Report Cards
+    // 4. Click handler for Active Report Cards
     const activeReportCards = document.querySelectorAll('.report-card.active');
     activeReportCards.forEach(card => {
         card.addEventListener('click', () => {
@@ -20,29 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Highlight Active Menu Item (Already set in HTML, but ensuring logic exists if needed)
+    // 5. Sidebar Menu Click Handlers (for visual toggle only)
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
-            // Remove active class from all
             menuItems.forEach(i => i.classList.remove('active'));
-            // Add to clicked
             item.classList.add('active');
-            
-            // Update icons color logic if needed (handled by CSS active class)
-            // Re-render icons might be needed if using replaceWith, but Lucide <i data-lucide> approach 
-            // usually replaces on load. If we change DOM, we might need to re-run createIcons or handle SVGs.
-            // Since we just toggle class and CSS handles color fill/stroke, it should be fine for SVG styles 
-            // IF the SVG inherits color.
-            // Lucide SVGs usually use 'currentColor' for stroke. 
-            // Let's check CSS: .menu-item.active i { color: #8B5CF6; }
-            // This updates the parent color. If SVG uses currentColor, it updates.
         });
     });
-
-    // Default Active State Enforcement (optional, strictly per TZ)
-    const reportsMenuItem = document.getElementById('menu-reports');
-    if (reportsMenuItem && !reportsMenuItem.classList.contains('active')) {
-        reportsMenuItem.classList.add('active');
-    }
 });

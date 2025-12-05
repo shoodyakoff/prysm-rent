@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRYSM - Отчеты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-path-prefix="../" data-active-menu="menu-reports">
+
+    <!-- 1. Шапка (Header) -->
+    <div id="header-placeholder"></div>
+
+    <!-- 2. Левый сайдбар (Sidebar) -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- 3. Основной контент (Main Content) -->
+    <main class="main-content">
+        
+        <!-- 4. Заголовок страницы -->
+        <h1 class="page-title">Ключевые показатели объекта</h1>
+
+        <!-- 5. Блок метрик -->
+        <div class="metrics-grid">
+            <!-- Row 1, Col 1: Control - Количество договоров -->
+            <div class="metric-card metric-control" data-metric="Количество договоров">
+                <div class="metric-icon-circle">
+                    <i data-lucide="file-text"></i>
+                </div>
+                <div class="metric-text-content">
+                    <div class="metric-name">Количество договоров</div>
+                    <div class="metric-value">187</div>
+                </div>
+            </div>
+
+            <!-- Row 1, Col 2: Planning - Площадь объекта -->
+            <div class="metric-card metric-planning" data-metric="Площадь объекта">
+                <div class="metric-icon-circle">
+                    <i data-lucide="box-select"></i>
+                </div>
+                <div class="metric-text-content">
+                    <div class="metric-name">Площадь объекта</div>
+                    <div class="metric-value">145 000 м²</div>
+                </div>
+            </div>
+
+            <!-- Row 1, Col 3: Optimization - Количество арендаторов -->
+            <div class="metric-card metric-optimization" data-metric="Количество арендаторов">
+                <div class="metric-icon-circle">
+                    <i data-lucide="users"></i>
+                </div>
+                <div class="metric-text-content">
+                    <div class="metric-name">Количество арендаторов</div>
+                    <div class="metric-value">50</div>
+                </div>
+            </div>
+
+            <!-- Row 2, Col 1: Control - Выручка от аренды -->
+            <div class="metric-card metric-control" data-metric="Выручка от аренды">
+                <div class="metric-icon-circle">
+                    <i data-lucide="russian-ruble"></i>
+                </div>
+                <div class="metric-text-content">
+                    <div class="metric-name">Выручка от аренды</div>
+                    <div class="metric-value">24 041 300 ₽</div>
+                </div>
+            </div>
+
+            <!-- Row 2, Col 2: Planning - Заполняемость -->
+            <div class="metric-card metric-planning" data-metric="Заполняемость">
+                <div class="metric-icon-circle">
+                    <i data-lucide="percent"></i>
+                </div>
+                <div class="metric-text-content">
+                    <div class="metric-name">Заполняемость</div>
+                    <div class="metric-value">87.5%</div>
+                </div>
+            </div>
+
+            <!-- Row 2, Col 3: Optimization - CSAT арендаторов -->
+            <div class="metric-card metric-optimization" data-metric="CSAT арендаторов">
+                <div class="metric-icon-circle">
+                    <i data-lucide="star"></i>
+                </div>
+                <div class="metric-text-content">
+                    <div class="metric-name">CSAT арендаторов</div>
+                    <div class="metric-value">4.2 / 5.0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Блок "Отчеты" -->
+        <h2 class="reports-main-title">Отчеты</h2>
+
+        <div class="reports-columns-container">
+            <!-- Столбец 1: Контроль -->
+            <div class="report-column">
+                <h3 class="report-section-title">Контроль</h3>
+                <!-- Rent Roll -->
+                <div class="report-card active" data-report="Rent Roll">
+                    <div class="report-icon-circle bg-control">
+                        <i data-lucide="building-2"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Rent Roll</div>
+                        <div class="report-desc">Управляйте арендным портфелем</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Депозиты -->
+                <div class="report-card active" data-report="Депозиты">
+                    <div class="report-icon-circle bg-control">
+                        <i data-lucide="shield"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Депозиты</div>
+                        <div class="report-desc">Управляйте уровнем покрытия депозитами</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Дебиторская задолженность -->
+                <div class="report-card active" data-report="Дебиторская задолженность и неустойки">
+                    <div class="report-icon-circle bg-control">
+                        <i data-lucide="alert-circle"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Дебиторская задолженность и неустойки</div>
+                        <div class="report-desc">Взыскивайте долги системно, не теряя деньги</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Штрафы -->
+                <div class="report-card active" data-report="Штрафы">
+                    <div class="report-icon-circle bg-control">
+                        <i data-lucide="gavel"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Штрафы</div>
+                        <div class="report-desc">Монетизируйте нарушения договорных обязательств</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+            </div>
+
+            <!-- Столбец 2: Планирование -->
+            <div class="report-column">
+                <h3 class="report-section-title">Планирование</h3>
+                <!-- Истекающие договоры -->
+                <div class="report-card active" data-report="Истекающие договоры">
+                    <div class="report-icon-circle bg-planning">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Истекающие договоры</div>
+                        <div class="report-desc">Планируйте работу с арендаторами заранее</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Индексация -->
+                <div class="report-card active" data-report="Индексация">
+                    <div class="report-icon-circle bg-planning">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Индексация</div>
+                        <div class="report-desc">Не пропускайте индексации</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Вакантность -->
+                <div class="report-card active" data-report="Вакантность">
+                    <div class="report-icon-circle bg-planning">
+                        <i data-lucide="door-open"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Вакантность</div>
+                        <div class="report-desc">Контролируйте вакансию, чтобы избежать простоя</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+            </div>
+
+            <!-- Столбец 3: Оптимизация -->
+            <div class="report-column">
+                <h3 class="report-section-title">Оптимизация</h3>
+                <!-- Изменения арендного портфеля -->
+                <div class="report-card active" data-report="Изменения арендного портфеля">
+                    <div class="report-icon-circle bg-optimization">
+                        <i data-lucide="repeat"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Изменения арендного портфеля</div>
+                        <div class="report-desc">Отслеживайте динамику для корректировки стратегии</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Анализ структуры доходов -->
+                <div class="report-card active" data-report="Анализ структуры доходов">
+                    <div class="report-icon-circle bg-optimization">
+                        <i data-lucide="pie-chart"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Анализ структуры доходов</div>
+                        <div class="report-desc">Приоритизируйте работу с наиболее прибыльными клиентами</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+
+                <!-- Анализ ценности арендаторов -->
+                <div class="report-card active" data-report="Анализ ценности арендаторов">
+                    <div class="report-icon-circle bg-optimization">
+                        <i data-lucide="user-cog"></i>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-title">Анализ ценности арендаторов</div>
+                        <div class="report-desc">Определяйте приоритеты в работе с арендным портфелем</div>
+                    </div>
+                    <i data-lucide="chevron-right" class="report-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

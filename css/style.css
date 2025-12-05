@@ -43,6 +43,16 @@ body {
     --primary-indigo: #4A43B6; /* Updated to match Figma icon background */
     --primary-violet: #8B5CF6;
     --badge-gradient: linear-gradient(135deg, #EC4899 0%, #D946EF 100%);
+    
+    /* Accent Gradients */
+    --gradient-control: linear-gradient(135deg, #A5B4FC 0%, #818CF8 100%);
+    --gradient-planning: linear-gradient(135deg, #A7F3D0 0%, #6EE7B7 100%);
+    --gradient-optimization: linear-gradient(135deg, #E9D5FF 0%, #C084FC 100%);
+    
+    /* Accent Colors */
+    --color-icon-control: #6366F1;
+    --color-icon-planning: #10B981;
+    --color-icon-optimization: #9333EA;
 }
 
 /* 1. Header */
@@ -190,6 +200,7 @@ body {
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
 }
 .menu-item i {
     width: 20px;
@@ -273,9 +284,9 @@ body {
 }
 
 /* Metric Gradients Updated */
-.metric-planning { background: linear-gradient(135deg, #A7F3D0 0%, #6EE7B7 100%); }
-.metric-optimization { background: linear-gradient(135deg, #FDE68A 0%, #FCD34D 100%); }
-.metric-control { background: linear-gradient(135deg, #A5B4FC 0%, #818CF8 100%); }
+.metric-planning { background: var(--gradient-planning); }
+.metric-optimization { background: var(--gradient-optimization); }
+.metric-control { background: var(--gradient-control); }
 
 .metric-lilac { background: #D1DFF8; }
 .metric-pink { background: #F5B5D1; }
@@ -407,13 +418,13 @@ body {
 .report-icon-circle.bg-gray svg { color: #9CA3AF; }
 
 .report-icon-circle.bg-control { background: transparent; }
-.report-icon-circle.bg-control svg { color: #6366F1; }
+.report-icon-circle.bg-control svg { color: var(--color-icon-control); }
 
 .report-icon-circle.bg-planning { background: transparent; }
-.report-icon-circle.bg-planning svg { color: #10B981; }
+.report-icon-circle.bg-planning svg { color: var(--color-icon-planning); }
 
 .report-icon-circle.bg-optimization { background: transparent; }
-.report-icon-circle.bg-optimization svg { color: #F59E0B; }
+.report-icon-circle.bg-optimization svg { color: var(--color-icon-optimization); }
 
 .report-icon-circle.bg-inactive { background: transparent; }
 .report-icon-circle.bg-inactive svg { color: #D1D5DB; }
